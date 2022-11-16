@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <HeaderComponent />
-    <MainComponent :users="users" :posts="posts"/>
+    <div v-if="isLoading">
+      <LoaderComponent />
+    </div>
+    <div v-else>
+      <MainComponent :users="users" :posts="posts"/>
+    </div>
   </div>
 </template>
 
@@ -9,18 +14,21 @@
 import axios from 'axios';
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/main-block/MainComponent.vue';
+import LoaderComponent from "./components/LoadingComponent.vue"
 
 export default {
   name: 'App',
   components: {
     HeaderComponent,
     MainComponent,
+    LoaderComponent
   },
 
     data: function() {
     return{
       users: [],
       posts: [],
+      isLoading: true,
     }
   },
 
@@ -31,6 +39,9 @@ export default {
         .then((result) => {
           //console.log(result.data);
           this.users = result.data;
+          setTimeout ( () => {
+            this.isLoading = false;
+          }, 3000);
         })
         .catch((error) => {
           console.warn(error);
@@ -43,6 +54,9 @@ export default {
         .then((result) => {
           console.log(result.data);
           this.posts = result.data;
+          setTimeout ( () => {
+            this.isLoading = false;
+          }, 3000);
         })
         .catch((error) => {
           console.warn(error);

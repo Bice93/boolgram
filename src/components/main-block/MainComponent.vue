@@ -23,6 +23,7 @@ import ProfileComponent from "./right-side/block-profile/ProfileComponent.vue";
 import HintsComponent from "./right-side/block-suggestion/HintsComponent.vue";
 import FooterComponent from "./right-side/FooterComponent.vue";
 
+
 export default {
   name: "MainMain",
   props:{

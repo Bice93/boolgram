@@ -48,18 +48,36 @@
 
       <!-- Contenitore like e commenti -->
       <div class="px-3">
-        <p>
-          Piace a
-          <span
-            class="fw-bold"
-            v-for="(element, index) in post.likes.slice(0, 1)"
-            :key="index"
-          >
-            {{ element.username }}
-          </span>
-          e altre
-          <span class="fw-bold"> {{ post.likes.length - 1 }} </span> persone
-        </p>
+        <div v-if="post.likes.length == 0"></div>
+
+        <div>
+          <div v-if="post.likes.length == 1">
+            <p>
+              Piace a
+              <span
+                class="fw-bold"
+                v-for="(element, index) in post.likes.slice(0, 1)"
+                :key="index"
+              >
+                {{ element.username }}
+              </span>
+            </p>
+          </div>
+          <div v-else>
+            <p>
+              Piace a
+              <span
+                class="fw-bold"
+                v-for="(element, index) in post.likes.slice(0, 1)"
+                :key="index"
+              >
+                {{ element.username }}
+              </span>
+              e altre
+              <span class="fw-bold"> {{ post.likes.length - 1 }} </span> persone
+            </p>
+          </div>
+        </div>
 
         <!-- Autore e testo del post -->
         <p class="card-text">
@@ -100,7 +118,9 @@
               <span class="fw-bold"> {{ element.username }} </span>
               {{ element.text }}
             </p>
-            <p @click="isShown = !isShown" class="text-muted hide">Mostra meno commenti...</p>
+            <p @click="isShown = !isShown" class="text-muted hide">
+              Mostra meno commenti...
+            </p>
           </div>
         </div>
 
@@ -174,7 +194,8 @@ export default {
   }
 }
 
-.comment, .hide {
+.comment,
+.hide {
   cursor: pointer;
 }
 </style>
