@@ -1,6 +1,6 @@
 <template>
-  <section class="d-flex scroll">
-    <SingleCardStory v-for="(element, index) in stories" :key="index" :image="element.img"/>
+  <section class="scroll d-flex">
+    <SingleCardStory class="me-2" v-for="(user, index) in users" :key="index" :user="user"/>
   </section>
 </template>
 
@@ -10,42 +10,16 @@ import SingleCardStory from './SingleStoryComponent.vue';
 export default {
     name:'StoriesElement',
 
+    props:{
+      users: Array,
+    },
+
     components:{
       SingleCardStory,
     },
 
     data: function () {
       return{
-        stories: [
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-        {
-          img: "landscape.png",
-        },
-
-      ],
       }
     },
 }

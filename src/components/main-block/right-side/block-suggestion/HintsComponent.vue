@@ -4,7 +4,7 @@
     <p class="fw-bold text-muted">Suggerimenti per te</p>
     <p class="fw-bold">Mostra tutti</p>
     </div>
-    <SingleHintComponent v-for="(element, index) in hints" :key=index :imageUser=element.imgUser :nameUser=element.nameUser />
+    <SingleHintComponent class="mb-3" v-for="(hint, index) in users" :key="index" :hint="hint" />
   </section>
 </template>
 
@@ -14,34 +14,16 @@ import SingleHintComponent from './SingleHintComponent.vue';
 export default {
     name:'HintsElement',
 
+    props:{
+      users: Array,
+    },
+
     components:{
       SingleHintComponent
     },
 
     data: function () {
       return{
-        hints: [
-        {
-          imgUser: "landscape.png",
-          nameUser: "John"
-        },
-        {
-          imgUser: "landscape.png",
-          nameUser: "John"
-        },
-        {
-          imgUser: "landscape.png",
-          nameUser: "John"
-        },
-        {
-          imgUser: "landscape.png",
-          nameUser: "John"
-        },
-        {
-          imgUser: "landscape.png",
-          nameUser: "John"
-        },
-      ],
       }
     },
 }

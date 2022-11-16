@@ -3,13 +3,13 @@
     <div class="row">
       <!-- Blocco sinistra -->
       <div class="col-7">
-        <StoriesComponent class="p-4"/>
+        <StoriesComponent :users="users" class="p-4"/>
         <PostsComponent class="mt-5"/>
       </div>
       <!-- Blocco destra -->
       <div class="col-5">
         <ProfileComponent class="px-5 mb-5"/>
-        <HintsComponent class="px-5 mb-5"/>
+        <HintsComponent :users="users" class="px-5 mb-5"/>
         <FooterComponent class="px-5"/>
       </div>
     </div>
@@ -25,6 +25,10 @@ import FooterComponent from "./right-side/FooterComponent.vue";
 
 export default {
   name: "MainMain",
+  props:{
+      users: Array,
+  },
+
   components: {
     StoriesComponent,
     PostsComponent,
@@ -32,6 +36,16 @@ export default {
     HintsComponent,
     FooterComponent,
   },
+
+  methods:{
+      getProfile(){
+        //console.log(this.users)
+      }
+    },
+
+    created(){
+      this.getProfile();
+    }
 };
 </script>
 
