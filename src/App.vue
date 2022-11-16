@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent />
-    <MainComponent :users="users"/>
+    <MainComponent :users="users" :posts="posts"/>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
     data: function() {
     return{
       users: [],
+      posts: [],
     }
   },
 
@@ -34,12 +35,25 @@ export default {
         .catch((error) => {
           console.warn(error);
         })
-    }
+    },
+
+    // recupero i post
+    getPosts: function(){
+       axios.get('https://flynn.boolean.careers/exercises/api/boolgram/posts')
+        .then((result) => {
+          console.log(result.data);
+          this.posts = result.data;
+        })
+        .catch((error) => {
+          console.warn(error);
+        })
+    },
   },
 
   created() {
     this.getUsers();
-  }
+    this.getPosts();
+  },
 }
 </script>
 

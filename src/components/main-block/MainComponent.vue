@@ -4,7 +4,7 @@
       <!-- Blocco sinistra -->
       <div class="col-7">
         <StoriesComponent :users="users" class="p-4"/>
-        <PostsComponent class="mt-5"/>
+        <PostsComponent :posts="posts" class="mt-5"/>
       </div>
       <!-- Blocco destra -->
       <div class="col-5">
@@ -27,6 +27,7 @@ export default {
   name: "MainMain",
   props:{
       users: Array,
+      posts: Array,
   },
 
   components: {
