@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h6>Footer</h6>
+    <p class="text-muted">	&#169; 2020 INSTAGRAM FROM FACEBOOK </p>
   </div>
 </template>
 

@@ -4,12 +4,12 @@
       <!-- Blocco sinistra -->
       <div class="col-7">
         <StoriesComponent class="p-4"/>
-        <PostsComponent class="p-4"/>
+        <PostsComponent class="mt-5"/>
       </div>
       <!-- Blocco destra -->
       <div class="col-5">
-        <ProfileComponent class="px-5"/>
-        <HintsComponent class="px-5"/>
+        <ProfileComponent class="px-5 mb-5"/>
+        <HintsComponent class="px-5 mb-5"/>
         <FooterComponent class="px-5"/>
       </div>
     </div>
