@@ -68,18 +68,44 @@
         </p>
 
         <!-- Commenti -->
-        <div>
+        <!-- Se i commenti sono presenti e sono meno di 3 -->
+        <div v-if="post.comments.length > 0 && post.comments.length <= 3">
+          <p v-for="(element, index) in post.comments" :key="index">
+            <span class="fw-bold"> {{ element.username }} </span>
+            {{ element.text }}
+          </p>
+        </div>
+        <!-- Altrimenti se i commenti sono presenti e sono più di 3 -->
+        <div v-else-if="post.comments.length > 0">
           <p class="text-muted">
             Mostra tutti e
-            <span>
+            <span class="comment" @click="isShown = !isShown">
               {{ post.comments.length }}
             </span>
             i commenti...
           </p>
-          <p v-for="(element, index) in post.comments.slice(0, 3)" :key="index">
-            <span class="fw-bold"> {{ element.username }} </span>
-            {{ element.text }}
-          </p>
+
+          <div v-if="post.comments.length >= 3 && isShown == false">
+            <p
+              v-for="(element, index) in post.comments.slice(0, 3)"
+              :key="index"
+            >
+              <span class="fw-bold"> {{ element.username }} </span>
+              {{ element.text }}
+            </p>
+          </div>
+
+          <div v-else-if="post.comments.length >= 3 && isShown == true">
+            <p v-for="(element, index) in post.comments" :key="index">
+              <span class="fw-bold"> {{ element.username }} </span>
+              {{ element.text }}
+            </p>
+            <p @click="isShown = !isShown" class="text-muted hide">Mostra meno commenti...</p>
+          </div>
+        </div>
+
+        <div v-else>
+          <p class="text-muted">Non ci sono commenti...</p>
         </div>
       </div>
     </div>
@@ -92,12 +118,12 @@
         justify-content-between
         align-items-center
         py-3
-      " >
+      "
+    >
       <i class="fa-regular fa-face-smile fs-3 me-2"></i>
       <input class="w-100" type="text" placeholder="Aggiungi un commento..." />
       <button type="submit">Pubblica</button>
     </div>
-    
   </div>
 </template>
 
@@ -110,7 +136,9 @@ export default {
   },
 
   data: function () {
-    return {};
+    return {
+      isShown: false,
+    };
   },
 
   methods: {},
@@ -144,5 +172,9 @@ export default {
     border: none;
     background: transparent;
   }
+}
+
+.comment, .hide {
+  cursor: pointer;
 }
 </style>
