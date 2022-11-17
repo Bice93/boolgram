@@ -1,5 +1,5 @@
 <template>
-  <div class="ms_stories rounded-circle p-1">
+  <div class="ms_stories p-1">
     <img class="rounded-circle img-fluid w-100 h-100" :src="user.profile_picture" :alt="`${user.profile_name}'s image`">
   </div>
 </template>
@@ -10,8 +10,6 @@ export default {
 
   props: {
     user: Object,
-    // imageUser:String,
-    // nameUser:String,
   }
 }
 </script>
@@ -20,6 +18,9 @@ export default {
 .ms_stories{
   min-width: 7rem;
   height: 7rem;
-  border: 2px solid gray;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right,magenta, yellow) border-box;
+  border-radius: 50%;
+  border: 3px solid transparent;
 }
 </style>

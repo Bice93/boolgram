@@ -39,15 +39,8 @@ export default {
     FooterComponent,
   },
 
-  methods:{
-      getProfile(){
-        //console.log(this.users)
-      }
-    },
+  methods:{},
 
-    created(){
-      this.getProfile();
-    }
 };
 </script>
 
