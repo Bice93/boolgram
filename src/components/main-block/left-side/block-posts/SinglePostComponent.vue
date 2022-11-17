@@ -30,7 +30,8 @@
         <ul class="d-flex align-items-center ms_icon p-0">
           <li class="m-2 fs-3">
             <a href="#">
-              <i class="fa-regular fa-heart"></i>
+              <i class="fa-regular fa-heart" @click="addLike()" v-if="isLiked == false"></i>
+              <i class="fa-solid fa-heart red" @click="addLike()" v-else></i>
             </a>
           </li>
           <li class="m-2 fs-3">
@@ -165,10 +166,16 @@ export default {
   data: function () {
     return {
       isShown: false,
+      isLiked: false,
     };
   },
 
   methods: {
+    addLike(){
+      event.preventDefault();
+      this.isLiked = !this.isLiked;
+    }, 
+
     newData(data) {
       let date = moment(data, "YYYYMMDD hh:mm:ss.ms").fromNow();
       if (date === 'a day ago'){
@@ -181,6 +188,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.red{
+  color: red;
+}
 .ms_cardPost {
   border-radius: 0.2rem;
 }
