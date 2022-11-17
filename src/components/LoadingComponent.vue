@@ -150,6 +150,13 @@ export default {};
 .ms_container {
   height: 80vh;
   padding: 0;
+  animation: load 3s;
+}
+
+@keyframes load{
+  0%{
+    opacity: 0;
+  }
 }
 
 .box_stories {

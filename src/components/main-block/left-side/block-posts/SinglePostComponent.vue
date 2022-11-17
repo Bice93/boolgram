@@ -130,6 +130,12 @@
       </div>
     </div>
 
+    <div class="px-3">
+      <p class="text-muted fw-semibold">
+        {{ newData(post.date.date) }}
+      </p>
+    </div>
+
     <div
       class="
         card-footer
@@ -148,6 +154,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 export default {
   name: "SinglePost",
 
@@ -161,7 +168,15 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    newData(data) {
+      let date = moment(data, "YYYYMMDD hh:mm:ss.ms").fromNow();
+      if (date === 'a day ago'){
+        date = '1 day ago'
+      }
+      return date;
+    },
+  },
 };
 </script>
 
