@@ -96,9 +96,9 @@
         </div>
         <!-- Altrimenti se i commenti sono presenti e sono più di 3 -->
         <div v-else-if="post.comments.length > 0">
-          <p class="text-muted">
+          <p class="text-muted comment" @click="isShown = !isShown">
             Mostra tutti e
-            <span class="comment" @click="isShown = !isShown">
+            <span>
               {{ post.comments.length }}
             </span>
             i commenti...
